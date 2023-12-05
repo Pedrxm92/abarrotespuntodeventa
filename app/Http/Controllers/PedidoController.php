@@ -52,7 +52,7 @@ $pedido->productos()->attach($producto->id, [
 //Restamos la cantidad de productos pedidos al stock
 $producto->stock -= $request->cantidad;
 $producto->save();
-return to_route('productos.index')->with('info', 'Pedido realizado con éxito');
+return redirect()->route('productos.index')->with('info', 'Pedido realizado con éxito');
 }
 /**
 * Display the specified resource.
