@@ -55,7 +55,7 @@ class="input input-bordered" maxlength="255" value="{{$user->address}}" />
  <label class="label" for="password_old">
  <span class="label-text">Contraseña actual</span>
  </label>
- <input type="password" name="password_old" placeholder="Ingrese la contraseña
+ <input type="password" name="password_old" placeholder="Ingrese la contraseña 
 actual" class="input input-bordered" maxlength="45" required />
  </div>
  <div class="form-control">

@@ -40,10 +40,20 @@
 </div>
 {{-- Imagen --}}
 <div class="form-control">
-<label class="label" for="imagen">
-<span class="label-text">Cambiar imagen</span>
-</label>
-<input type="file" name="imagen" class="file-input file-input-bordered file-input-success file-input-sm w-full max-w-xs" accept=".jpg" />
+    <label class="label" for="imagen">
+        <span class="label-text">Cambiar imagen</span>
+    </label>
+    <input type="file" name="imagen" class="file-input file-input-bordered file-input-success file-input-sm w-full max-w-xs" accept=".jpg" />
+</div>
+
+{{-- Vista previa de la imagen actual --}}
+<div class="mt-4">
+    <label class="label text-base">Imagen actual</label>
+    @if(file_exists('images/productos/producto_' . $producto->id . '.jpg'))
+        <img src="{{ asset('images/productos/producto_' . $producto->id . '.jpg') }}" alt="{{$producto->nombre}}" class="rounded-lg h-40 w-full object-cover mt-2">
+    @else
+        <img src="{{ asset('images/productos/default.jpg') }}" alt="{{$producto->nombre}}" class="rounded-lg mt-2">
+    @endif
 </div>
 {{-- Descripcion --}}
 <div class="form-control">

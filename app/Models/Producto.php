@@ -31,4 +31,5 @@ return $this->belongsToMany(Pedido::class)->withPivot('cantidad', 'precio'); // 
             return asset('images/default.jpg');
         }
     }
+    
 }

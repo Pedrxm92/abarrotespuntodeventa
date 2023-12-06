@@ -17,6 +17,7 @@ use App\Http\Middleware\CheckAdmin;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::view('/', 'inicio')->name('inicio');
 
 // Rutas para Categorías
@@ -32,17 +33,16 @@ Route::get('/perfil', [AutenticaController::class, 'perfil'])->name('perfil');
 Route::put('/perfil/{user}', [AutenticaController::class, 'perfilUpdate'])->name('perfil.update');
 Route::put('/perfil/password/{user}', [AutenticaController::class, 'passwordUpdate'])->name('password.update');
 
-// Rutas para Productos accesibles para todos (incluso usuarios no autenticados)
-Route::resource('productos', ProductoController::class)->only(['index', 'show']);
-
-// Rutas para Pedidos (protegidas con el middleware auth)
+// Rutas para Productos
 Route::middleware(['auth'])->group(function () {
+    Route::resource('productos', ProductoController::class);
+    
+    // Rutas para Pedidos
     Route::resource('/pedidos', PedidoController::class)->except(['create']);
     Route::get('/pedidos/create/{producto}', [PedidoController::class, 'create'])->name('pedidos.create');
-
+    
     // Rutas para Productos que solo los admins pueden acceder
     Route::middleware(['App\Http\Middleware\CheckAdmin'])->group(function () {
-        Route::resource('productos', ProductoController::class)->only(['create', 'store', 'edit', 'update', 'destroy']);
         Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
     });
 });
