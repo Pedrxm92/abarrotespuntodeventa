@@ -25,7 +25,7 @@ $response = $this->put('/api/v1/productos/2', [
 'descripcion' => 'descripcion actualizado',
 'precio' => 50.000,
 'stock' => 20,
-'categoria_id' => 1,
+'categoria_id' => 3,
 ]);
 $response->assertStatus(200);
 }
